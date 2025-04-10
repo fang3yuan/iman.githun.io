@@ -29,6 +29,7 @@
       }
     }
 
+    /* تأثير الفقاعات المتحركة */
     .bubble {
       position: absolute;
       bottom: -100px;
@@ -52,21 +53,37 @@
       }
     }
 
+    /* تأثير الحركة للأيقونات */
+    .social-icons a {
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 24px;
+      color: #ff69b4;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+    }
+
     .card {
-      width: 450px; /* زيادة العرض قليلاً */
-      background: white;
+      width: 450px;
+      background: rgba(255, 255, 255, 0.8); /* شفافية */
       border-radius: 25px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      padding: 50px 20px; /* زيادة المساحة الداخلية */
+      padding: 50px 20px;
       text-align: center;
-      position: relative;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* لتثبيت اللوحة في المنتصف */
       z-index: 2;
-      max-width: 100%; /* التأكد من أنها تتكيف مع الشاشات الصغيرة */
+      max-width: 100%;
     }
 
     .profile-img {
-      width: 160px; /* زيادة حجم الصورة */
-      height: 160px; /* زيادة حجم الصورة */
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
       object-fit: cover;
       border: 5px solid #ffb6c1;
@@ -93,18 +110,6 @@
       margin: 20px 0;
     }
 
-    .social-icons a {
-      text-decoration: none;
-      margin: 0 10px;
-      font-size: 24px;
-      color: #ff69b4;
-      transition: transform 0.3s ease;
-    }
-
-    .social-icons a:hover {
-      transform: scale(1.2);
-    }
-
     .instagram-btn {
       display: inline-block;
       background: linear-gradient(to right, #ff66cc, #ff99cc);
@@ -124,16 +129,53 @@
     .instagram-btn:hover {
       background: linear-gradient(to right, #ff3385, #ff66b2);
     }
+
+    /* تأثير الفقاعات المختلفة */
+    .bubble:nth-child(1) {
+      width: 40px;
+      height: 40px;
+      left: 10%;
+      animation-duration: 14s;
+    }
+
+    .bubble:nth-child(2) {
+      width: 25px;
+      height: 25px;
+      left: 30%;
+      animation-duration: 18s;
+    }
+
+    .bubble:nth-child(3) {
+      width: 50px;
+      height: 50px;
+      left: 60%;
+      animation-duration: 12s;
+    }
+
+    .bubble:nth-child(4) {
+      width: 35px;
+      height: 35px;
+      left: 80%;
+      animation-duration: 16s;
+    }
+
+    .bubble:nth-child(5) {
+      width: 20px;
+      height: 20px;
+      left: 50%;
+      animation-duration: 20s;
+    }
+
   </style>
 </head>
 <body>
 
   <!-- Background bubbles -->
-  <div class="bubble" style="width: 40px; height: 40px; left: 10%; animation-duration: 14s;"></div>
-  <div class="bubble" style="width: 25px; height: 25px; left: 30%; animation-duration: 18s;"></div>
-  <div class="bubble" style="width: 50px; height: 50px; left: 60%; animation-duration: 12s;"></div>
-  <div class="bubble" style="width: 35px; height: 35px; left: 80%; animation-duration: 16s;"></div>
-  <div class="bubble" style="width: 20px; height: 20px; left: 50%; animation-duration: 20s;"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
 
   <!-- Profile card -->
   <div class="card">
