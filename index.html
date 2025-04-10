@@ -29,6 +29,58 @@
       }
     }
 
+    /* تأثير التموجات الوردية */
+    .wave-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .wave-01, .wave-02, .wave-03 {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: linear-gradient(to top right, #ff66b2, #ff99cc);
+      border-radius: 50%;
+      animation: rotate 10s linear infinite;
+    }
+
+    .wave-02 {
+      opacity: 0.5;
+      animation-duration: 15s;
+    }
+
+    .wave-03 {
+      opacity: 0.2;
+      animation-duration: 15s;
+    }
+
+    /* تأثير التموجات */
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .wave-01 {
+      top: -200%;
+      left: -20%;
+    }
+
+    .wave-02 {
+      top: -205%;
+      left: -22%;
+    }
+
+    .wave-03 {
+      top: -198%;
+      left: -18%;
+    }
+
     /* تأثير الفقاعات المتحركة */
     .bubble {
       position: absolute;
@@ -170,14 +222,21 @@
 </head>
 <body>
 
-  <!-- Background bubbles -->
+  <!-- خلفية التموجات -->
+  <div class="wave-bg">
+    <div class="wave-01"></div>
+    <div class="wave-02"></div>
+    <div class="wave-03"></div>
+  </div>
+
+  <!-- فقاعات متحركة -->
   <div class="bubble"></div>
   <div class="bubble"></div>
   <div class="bubble"></div>
   <div class="bubble"></div>
   <div class="bubble"></div>
 
-  <!-- Profile card -->
+  <!-- بطاقة المستخدم -->
   <div class="card">
     <img class="profile-img" src="https://files.catbox.moe/91o92l.jpg" alt="Profile" />
     <div class="username">𝐈𝐌𝐀𝐍🇲🇦</div>
