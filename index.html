@@ -12,7 +12,6 @@
       background: black;
     }
 
-    /* Video background */
     #background-video {
       position: fixed;
       right: 0;
@@ -23,7 +22,6 @@
       object-fit: cover;
     }
 
-    /* ID Card Container */
     .id-card {
       position: absolute;
       top: 50%;
@@ -55,36 +53,28 @@
       text-shadow: 0 0 5px #f0f;
     }
 
-    .id-card p {
+    .typewriter {
+      display: inline-block;
+      overflow: hidden;
+      border-right: 2px solid #fff;
+      white-space: nowrap;
+      margin: 0 auto;
+      letter-spacing: 1px;
+      animation: typing 3s steps(30, end), blink 0.75s step-end infinite;
       font-size: 14px;
       opacity: 0.8;
     }
 
-    /* Glowing border animation */
-    .id-card::before {
-      content: "";
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, #f0f, #0ff, #f0f);
-      z-index: -1;
-      border-radius: 20px;
-      filter: blur(20px);
-      animation: pulse 4s linear infinite;
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
     }
 
-    @keyframes pulse {
-      0%, 100% {
-        opacity: 0.6;
-      }
-      50% {
-        opacity: 1;
-      }
+    @keyframes blink {
+      from, to { border-color: transparent; }
+      50% { border-color: white; }
     }
 
-    /* Social Icons */
     .social-icons {
       margin-top: 15px;
       display: flex;
@@ -114,23 +104,29 @@
 </head>
 <body>
 
-  <!-- Background Video -->
   <video autoplay muted loop id="background-video">
     <source src="atomic-background.mp4" type="video/mp4" />
   </video>
 
-  <!-- ID Card -->
   <div class="id-card">
     <img class="profile" src="https://files.catbox.moe/yj6kr0.jpg" alt="Profile Picture" />
     <h2>Obaida Tos</h2>
-    <p>Shadow Identity</p>
+    <p class="typewriter">Shadow Identity</p>
 
     <div class="social-icons">
-      <a href="https://twitter.com/yourprofile" target="_blank" title="Twitter">
-        <svg viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.2 4.2 0 001.84-2.31 8.37 8.37 0 01-2.65 1A4.16 4.16 0 0016 4a4.2 4.2 0 00-4.2 4.2c0 .33.04.66.1.97A11.87 11.87 0 013 5.14a4.19 4.19 0 001.3 5.6 4.08 4.08 0 01-1.9-.52v.05a4.2 4.2 0 003.36 4.12 4.18 4.18 0 01-1.9.07 4.21 4.21 0 003.9 2.9A8.37 8.37 0 012 19.54a11.8 11.8 0 006.29 1.84c7.55 0 11.68-6.25 11.68-11.68 0-.18 0-.36-.01-.54A8.32 8.32 0 0022.46 6z"/></svg>
+      <!-- Instagram -->
+      <a href="https://instagram.com/yourprofile" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .2 2.5.4.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.5.3 1.3.4 2.5.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 2-.4 2.5-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.5.2-1.3.3-2.5.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.2-2.5-.4-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.5-.3-1.3-.4-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-2 .4-2.5.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .5-.2 1.3-.3 2.5-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.4 0-4.6.1-1.1.1-1.7.2-2.1.4-.5.2-.8.4-1.2.8-.4.4-.6.7-.8 1.2-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.5-.1 4.6s0 3.4.1 4.6c.1 1.1.2 1.7.4 2.1.2.5.4.8.8 1.2.4.4.7.6 1.2.8.4.2 1 .3 2.1.4 1.2.1 1.5.1 4.6.1s3.4 0 4.6-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.8-.4 1.2-.8.4-.4.6-.7.8-1.2.2-.4.3-1 .4-2.1.1-1.2.1-1.5.1-4.6s0-3.4-.1-4.6c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.8-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.5-.1-4.6-.1zM12 5.8c3.4 0 6.2 2.8 6.2 6.2S15.4 18.2 12 18.2 5.8 15.4 5.8 12 8.6 5.8 12 5.8zm0 1.8A4.4 4.4 0 007.6 12 4.4 4.4 0 0012 16.4 4.4 4.4 0 0016.4 12 4.4 4.4 0 0012 7.6zm5.8-2a1.4 1.4 0 110 2.8 1.4 1.4 0 010-2.8z"/></svg>
       </a>
-      <a href="https://github.com/yourprofile" target="_blank" title="GitHub">
-        <svg viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.92.58.1.79-.25.79-.56v-2.03c-3.2.7-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.07-.74.08-.72.08-.72 1.19.08 1.81 1.23 1.81 1.23 1.05 1.8 2.76 1.28 3.43.98.1-.76.41-1.28.75-1.57-2.55-.29-5.23-1.28-5.23-5.72 0-1.26.45-2.3 1.2-3.11-.12-.29-.52-1.45.11-3.01 0 0 .98-.31 3.2 1.19a11.2 11.2 0 015.82 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.56.23 2.72.11 3.01.75.81 1.2 1.85 1.2 3.11 0 4.45-2.69 5.42-5.25 5.7.42.36.79 1.1.79 2.22v3.29c0 .31.21.66.8.55A11.51 11.51 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+
+      <!-- Telegram -->
+      <a href="https://t.me/yourprofile" target="_blank" title="Telegram">
+        <svg viewBox="0 0 24 24"><path d="M9.036 16.505l-.396 5.555c.568 0 .816-.243 1.112-.535l2.665-2.498 5.522 4.036c1.012.556 1.736.264 1.988-.937l3.604-16.43c.324-1.5-.566-2.084-1.52-1.72L1.69 9.84c-1.458.57-1.44 1.386-.25 1.758l5.527 1.725L18.284 5.86c.605-.387 1.157-.173.704.214l-10.98 10.43z"/></svg>
+      </a>
+
+      <!-- TikTok -->
+      <a href="https://tiktok.com/@yourprofile" target="_blank" title="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M12 2v3.3a4.9 4.9 0 003.6 4.7v2.2a8.6 8.6 0 01-3.6-.7v6.3a4.6 4.6 0 11-3.6-4.5V11a7.2 7.2 0 100 14.4A7.2 7.2 0 0012 11v-9z"/></svg>
       </a>
     </div>
   </div>
