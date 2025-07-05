@@ -10,6 +10,7 @@
       padding: 0;
       overflow: hidden;
       background: black;
+      font-family: 'Segoe UI', sans-serif;
     }
 
     #background-video {
@@ -27,29 +28,59 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 320px;
-      padding: 20px;
-      border-radius: 20px;
+      width: 380px;
+      padding: 30px;
+      border-radius: 25px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 25px rgba(255, 0, 255, 0.5);
       text-align: center;
-      font-family: 'Segoe UI', sans-serif;
       color: #fff;
+      overflow: hidden;
     }
 
-    .id-card img.profile {
-      width: 100px;
-      height: 100px;
+    .photo-wrapper {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 20px;
+    }
+
+    .photo-wrapper img {
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
-      border: 2px solid rgba(255, 255, 255, 0.5);
-      margin-bottom: 15px;
+      border: 4px solid #a300ff;
+      z-index: 2;
+      position: relative;
+    }
+
+    .photo-wrapper::before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: conic-gradient(#a300ff, transparent, #a300ff);
+      animation: rotateLight 4s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes rotateLight {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     .id-card h2 {
+      font-size: 24px;
       margin: 10px 0;
-      font-size: 22px;
       text-shadow: 0 0 5px #f0f;
     }
 
@@ -58,11 +89,10 @@
       overflow: hidden;
       border-right: 2px solid #fff;
       white-space: nowrap;
-      margin: 0 auto;
       letter-spacing: 1px;
       animation: typing 3s steps(30, end), blink 0.75s step-end infinite;
-      font-size: 14px;
-      opacity: 0.8;
+      font-size: 15px;
+      opacity: 0.9;
     }
 
     @keyframes typing {
@@ -76,17 +106,16 @@
     }
 
     .social-icons {
-      margin-top: 15px;
+      margin-top: 20px;
       display: flex;
       justify-content: center;
-      gap: 15px;
+      gap: 20px;
     }
 
     .social-icons a {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       display: inline-block;
-      fill: #fff;
       opacity: 0.8;
       transition: 0.3s;
     }
@@ -99,6 +128,35 @@
     .social-icons svg {
       width: 100%;
       height: 100%;
+      fill: #fff;
+    }
+
+    /* Digital Lines Effect */
+    .digital-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(170, 0, 255, 0.1),
+        rgba(170, 0, 255, 0.1) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+      pointer-events: none;
+      z-index: 0;
+      animation: moveLight 3s linear infinite;
+    }
+
+    @keyframes moveLight {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 0 100%;
+      }
     }
   </style>
 </head>
@@ -109,7 +167,12 @@
   </video>
 
   <div class="id-card">
-    <img class="profile" src="https://files.catbox.moe/yj6kr0.jpg" alt="Profile Picture" />
+    <div class="digital-lines"></div>
+
+    <div class="photo-wrapper">
+      <img src="https://files.catbox.moe/yj6kr0.jpg" alt="Profile Picture" />
+    </div>
+
     <h2>Obaida Tos</h2>
     <p class="typewriter">Shadow Identity</p>
 
@@ -126,7 +189,7 @@
 
       <!-- TikTok -->
       <a href="https://tiktok.com/@yourprofile" target="_blank" title="TikTok">
-        <svg viewBox="0 0 24 24"><path d="M12 2v3.3a4.9 4.9 0 003.6 4.7v2.2a8.6 8.6 0 01-3.6-.7v6.3a4.6 4.6 0 11-3.6-4.5V11a7.2 7.2 0 100 14.4A7.2 7.2 0 0012 11v-9z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2v3c1.6 0 3.1.7 4.1 1.9 1 .8 2.3 1.3 3.6 1.3v3a7.6 7.6 0 01-3.6-.9v7.3a6 6 0 11-6-6h1v3a3 3 0 100 6 3 3 0 003-3V2z" /></svg>
       </a>
     </div>
   </div>
