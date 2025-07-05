@@ -2,265 +2,138 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pinky Girl Card</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Futuristic ID Card</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Poppins', sans-serif;
-      height: 100vh;
-      background: linear-gradient(135deg, #ffe6f0, #ffccff);
       overflow: hidden;
-      position: relative;
-      animation: backgroundMove 20s infinite alternate;
+      background: black;
     }
 
-    /* تأثير حركة الخلفية */
-    @keyframes backgroundMove {
-      0% {
-        background-position: 10% 50%;
-      }
-      100% {
-        background-position: 100% 50%;
-      }
-    }
-
-    /* تأثير التموجات الوردية */
-    .wave-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+    /* Video background */
+    #background-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
       z-index: -1;
-      overflow: hidden;
+      object-fit: cover;
     }
 
-    .wave-01, .wave-02, .wave-03 {
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      background: linear-gradient(to top right, #ff66b2, #ff99cc);
-      border-radius: 50%;
-      animation: rotate 10s linear infinite;
-    }
-
-    .wave-02 {
-      opacity: 0.5;
-      animation-duration: 15s;
-    }
-
-    .wave-03 {
-      opacity: 0.2;
-      animation-duration: 15s;
-    }
-
-    /* تأثير التموجات */
-    @keyframes rotate {
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    .wave-01 {
-      top: -200%;
-      left: -20%;
-    }
-
-    .wave-02 {
-      top: -205%;
-      left: -22%;
-    }
-
-    .wave-03 {
-      top: -198%;
-      left: -18%;
-    }
-
-    /* تأثير الفقاعات المتحركة */
-    .bubble {
-      position: absolute;
-      bottom: -100px;
-      background-color: rgba(255, 192, 203, 0.3);
-      border-radius: 50%;
-      animation: rise 15s infinite ease-in;
-      z-index: 0;
-    }
-
-    @keyframes rise {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 0;
-      }
-      50% {
-        opacity: 0.5;
-      }
-      100% {
-        transform: translateY(-120vh) scale(1.2);
-        opacity: 0;
-      }
-    }
-
-    /* تأثير الحركة للأيقونات */
-    .social-icons a {
-      text-decoration: none;
-      margin: 0 10px;
-      font-size: 24px;
-      color: #ff69b4;
-      transition: transform 0.3s ease;
-    }
-
-    .social-icons a:hover {
-      transform: scale(1.2);
-    }
-
-    .card {
-      width: 450px;
-      background: rgba(255, 255, 255, 0.8); /* شفافية */
-      border-radius: 25px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      padding: 50px 20px;
-      text-align: center;
+    /* ID Card Container */
+    .id-card {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%); /* لتثبيت اللوحة في المنتصف */
-      z-index: 2;
-      max-width: 100%;
+      transform: translate(-50%, -50%);
+      width: 320px;
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
     }
 
-    .profile-img {
-      width: 160px;
-      height: 160px;
+    .id-card img.profile {
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid #ffb6c1;
-      margin-top: -90px;
-      box-shadow: 0 0 20px rgba(255,182,193,0.6);
-    }
-
-    .username {
-      font-size: 1.8em;
-      font-weight: 600;
-      color: #ff69b4;
-      margin: 15px 0 5px;
-    }
-
-    .bio {
-      font-size: 1.2em;
-      color: #999;
+      border: 2px solid rgba(255, 255, 255, 0.5);
       margin-bottom: 15px;
-      min-height: 80px;
-      padding: 0 10px;
     }
 
+    .id-card h2 {
+      margin: 10px 0;
+      font-size: 22px;
+      text-shadow: 0 0 5px #f0f;
+    }
+
+    .id-card p {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* Glowing border animation */
+    .id-card::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #f0f, #0ff, #f0f);
+      z-index: -1;
+      border-radius: 20px;
+      filter: blur(20px);
+      animation: pulse 4s linear infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 0.6;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* Social Icons */
     .social-icons {
-      margin: 20px 0;
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
     }
 
-    .instagram-btn {
+    .social-icons a {
+      width: 24px;
+      height: 24px;
       display: inline-block;
-      background: linear-gradient(to right, #ff66cc, #ff99cc);
-      color: white;
-      padding: 12px 25px;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 10px;
-      transition: background 0.3s ease;
+      fill: #fff;
+      opacity: 0.8;
+      transition: 0.3s;
     }
 
-    .instagram-btn i {
-      margin-right: 8px;
+    .social-icons a:hover {
+      opacity: 1;
+      transform: scale(1.2);
     }
 
-    .instagram-btn:hover {
-      background: linear-gradient(to right, #ff3385, #ff66b2);
+    .social-icons svg {
+      width: 100%;
+      height: 100%;
     }
-
-    /* تأثير الفقاعات المختلفة */
-    .bubble:nth-child(1) {
-      width: 40px;
-      height: 40px;
-      left: 10%;
-      animation-duration: 14s;
-    }
-
-    .bubble:nth-child(2) {
-      width: 25px;
-      height: 25px;
-      left: 30%;
-      animation-duration: 18s;
-    }
-
-    .bubble:nth-child(3) {
-      width: 50px;
-      height: 50px;
-      left: 60%;
-      animation-duration: 12s;
-    }
-
-    .bubble:nth-child(4) {
-      width: 35px;
-      height: 35px;
-      left: 80%;
-      animation-duration: 16s;
-    }
-
-    .bubble:nth-child(5) {
-      width: 20px;
-      height: 20px;
-      left: 50%;
-      animation-duration: 20s;
-    }
-
   </style>
 </head>
 <body>
 
-  <!-- خلفية التموجات -->
-  <div class="wave-bg">
-    <div class="wave-01"></div>
-    <div class="wave-02"></div>
-    <div class="wave-03"></div>
-  </div>
+  <!-- Background Video -->
+  <video autoplay muted loop id="background-video">
+    <source src="atomic-background.mp4" type="video/mp4" />
+  </video>
 
-  <!-- فقاعات متحركة -->
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-
-  <!-- بطاقة المستخدم -->
-  <div class="card">
-    <img class="profile-img" src="https://files.catbox.moe/91o92l.jpg" alt="Profile" />
-    <div class="username">𝐈𝐌𝐀𝐍🇲🇦</div>
-    <div class="bio">
-      <span class="typed-text"></span>
-    </div>
+  <!-- ID Card -->
+  <div class="id-card">
+    <img class="profile" src="https://example.com/your-profile.jpg" alt="Profile Picture" />
+    <h2>Obaida Tos</h2>
+    <p>Shadow Identity</p>
 
     <div class="social-icons">
-      <a href="https://www.tiktok.com/@amona0376?_t=ZS-8vPnhvqyFDm&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
-      <a href="https://www.instagram.com/ayescr7?igsh=Ymprc2VqOG13d2Jl" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://twitter.com/yourprofile" target="_blank" title="Twitter">
+        <svg viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.2 4.2 0 001.84-2.31 8.37 8.37 0 01-2.65 1A4.16 4.16 0 0016 4a4.2 4.2 0 00-4.2 4.2c0 .33.04.66.1.97A11.87 11.87 0 013 5.14a4.19 4.19 0 001.3 5.6 4.08 4.08 0 01-1.9-.52v.05a4.2 4.2 0 003.36 4.12 4.18 4.18 0 01-1.9.07 4.21 4.21 0 003.9 2.9A8.37 8.37 0 012 19.54a11.8 11.8 0 006.29 1.84c7.55 0 11.68-6.25 11.68-11.68 0-.18 0-.36-.01-.54A8.32 8.32 0 0022.46 6z"/></svg>
+      </a>
+      <a href="https://github.com/yourprofile" target="_blank" title="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.92.58.1.79-.25.79-.56v-2.03c-3.2.7-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.07-.74.08-.72.08-.72 1.19.08 1.81 1.23 1.81 1.23 1.05 1.8 2.76 1.28 3.43.98.1-.76.41-1.28.75-1.57-2.55-.29-5.23-1.28-5.23-5.72 0-1.26.45-2.3 1.2-3.11-.12-.29-.52-1.45.11-3.01 0 0 .98-.31 3.2 1.19a11.2 11.2 0 015.82 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.56.23 2.72.11 3.01.75.81 1.2 1.85 1.2 3.11 0 4.45-2.69 5.42-5.25 5.7.42.36.79 1.1.79 2.22v3.29c0 .31.21.66.8.55A11.51 11.51 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+      </a>
     </div>
-
-    <a href="https://www.instagram.com/ayescr7?igsh=Ymprc2VqOG13d2Jl" target="_blank" class="instagram-btn">
-      <i class="fab fa-instagram"></i> Follow me
-    </a>
   </div>
 
-  <script>
-    var typed = new Typed(".typed-text", {
-      strings: ["𝚆𝚊𝚝𝚎𝚛𝚖𝚎𝚕𝚘𝚗𝚜 𝚖𝚊𝚢 𝚛𝚞𝚕𝚎 𝚝𝚑𝚎 𝚠𝚘𝚛𝚕𝚍 𝚘𝚗𝚎 𝚍𝚊𝚢."],
-      typeSpeed: 40,
-      showCursor: true,
-      loop: false
-    });
-  </script>
 </body>
 </html>
