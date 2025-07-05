@@ -1,141 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Futuristic ID Card</title>
-  <style>
-    :root {
-      --violet: #a300ff;
-      --glow-violet: #f5e1ff;
-    }
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
-    body {
-      background: #000;
-      overflow: hidden;
-      font-family: 'Segoe UI', sans-serif;
-      color: #fff;
-    }
-    #background-video {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      z-index: -2;
-    }
-    .id-card {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 420px;
-      padding: 35px;
-      border-radius: 28px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.18);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 0 28px rgba(255, 0, 255, 0.55);
-      overflow: hidden;
-      z-index: 1;
-      text-align: center;
-    }
-    .photo-wrapper {
-      position: relative;
-      width: 160px;
-      height: 160px;
-      margin: 0 auto 26px;
-    }
-    .photo-wrapper img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      border: 6px solid var(--violet);
-      z-index: 2;
-      position: relative;
-    }
-    .photo-wrapper::before {
-      content: "";
-      position: absolute;
-      top: -10px; left: -10px;
-      width: calc(100% + 20px);
-      height: calc(100% + 20px);
-      border-radius: 50%;
-      background: conic-gradient(from 0deg, transparent 0deg 160deg, var(--glow-violet) 160deg 200deg, transparent 200deg 360deg);
-      animation: rotateGlow 3s linear infinite;
-      filter: blur(3px);
-      opacity: 0.8;
-      z-index: 1;
-    }
-    @keyframes rotateGlow {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    h2 {
-      font-size: 26px;
-      text-align: center;
-      text-shadow: 0 0 6px var(--glow-violet);
-      margin-bottom: 10px;
-    }
-    .typewriter {
-      display: inline-block;
-      overflow: hidden;
-      border-right: 2px solid #fff;
-      white-space: nowrap;
-      font-size: 16px;
-      letter-spacing: 1px;
-      animation: typing 3s steps(32,end), blink 0.8s step-end infinite;
-      margin-bottom: 20px;
-      max-width: 100%;
-    }
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
-    .social-icons {
-      margin-top: 10px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      z-index: 2;
-      position: relative;
-    }
-    .social-icons a {
-      width: 28px;
-      height: 28px;
-      display: inline-block;
-      transition: 0.3s;
-      opacity: 0.8;
-    }
-    .social-icons a:hover {
-      transform: scale(1.2);
-      opacity: 1;
-    }
-    .social-icons svg {
-      fill: #fff;
-      width: 100%;
-      height: 100%;
-    }
-    /* الشبكة مع بوابات منطقية وأرقام 0 و1 */
-    .grid-overlay {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      background-image:
-        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><g fill="none" stroke="rgba(170,0,255,0.2)" stroke-width="1"><path d="M0 0 H120 M0 20 H120 M0 40 H120 M0 60 H120 M0 80 H120 M0 100 H120 M0 120 H120"/><path d="M0 0 V120 M20 0 V120 M40 0 V120 M60 0 V120 M80 0 V120 M100 0 V120 M120 0 V120"/><path d="M30 30 q10 -10 20 0 q10 10 20 0" stroke-width="1.5" stroke="rgba(170,0,255,0.4)"/><text x="10" y="15" font-size="12" fill="rgba(255,255,255,0.15)">0</text><text x="50" y="35" font-size="12" fill="rgba(255,255,255,0.2)">1</text><text x="90" y="65" font-size="12" fill="rgba(255,255,255,0.15)">0</text><text x="20" y="95" font-size="12" fill="rgba(255,255,255,0.2)">1</text></g></svg>');
-      background-repeat: repeat;
-      background-size: 120px 120px;
-      animation: gridGlow 4s ease-in-out infinite;
-    }
-    @keyframes gridGlow {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 0.5; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Futuristic ID Card - Energy Grid</title>
+<style>
+  :root {
+    --violet: #a300ff;
+    --glow-violet: #d97aff;
+    --glow-white: #f5e1ff;
+  }
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    background: #000;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+  }
+  #background-video {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: -3;
+  }
+
+  /* بطاقة الهوية */
+  .id-card {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 420px;
+    padding: 35px;
+    border-radius: 28px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 0 28px var(--violet);
+    overflow: hidden;
+    z-index: 1;
+    text-align: center;
+  }
+
+  /* توهج دوار حول الصورة */
+  .photo-wrapper {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 26px;
+    z-index: 10;
+  }
+  .photo-wrapper img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 6px solid var(--violet);
+    position: relative;
+    z-index: 10;
+    filter: drop-shadow(0 0 12px var(--violet));
+  }
+  /* الدائرة المشعة المتحركة */
+  .photo-wrapper::before {
+    content: "";
+    position: absolute;
+    top: -12px; left: -12px;
+    width: calc(100% + 24px);
+    height: calc(100% + 24px);
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 20% 30%, var(--glow-violet) 5%, transparent 70%),
+      radial-gradient(circle at 80% 70%, var(--glow-violet) 6%, transparent 70%);
+    filter: blur(10px);
+    animation: pulseGlow 3s ease-in-out infinite;
+    opacity: 0.8;
+    z-index: 5;
+  }
+  /* دائرة لامعة تدور */
+  .photo-wrapper::after {
+    content: "";
+    position: absolute;
+    top: -6px; left: -6px;
+    width: calc(100% + 12px);
+    height: calc(100% + 12px);
+    border-radius: 50%;
+    border: 2.5px solid var(--glow-violet);
+    box-shadow: 0 0 15px var(--glow-violet);
+    animation: rotateGlow 4s linear infinite;
+    z-index: 7;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+  }
+  @keyframes rotateGlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* النص */
+  h2 {
+    font-size: 26px;
+    text-shadow: 0 0 10px var(--glow-violet);
+    margin-bottom: 10px;
+  }
+  .typewriter {
+    display: inline-block;
+    overflow: hidden;
+    border-right: 2px solid #fff;
+    white-space: nowrap;
+    font-size: 16px;
+    letter-spacing: 1px;
+    animation: typing 3s steps(32,end), blink 0.8s step-end infinite;
+    margin-bottom: 20px;
+    max-width: 100%;
+  }
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+
+  /* أيقونات التواصل الاجتماعي */
+  .social-icons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    z-index: 20;
+    position: relative;
+  }
+  .social-icons a {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    transition: 0.3s;
+    opacity: 0.8;
+    filter: drop-shadow(0 0 4px var(--violet));
+  }
+  .social-icons a:hover {
+    transform: scale(1.3);
+    opacity: 1;
+    filter: drop-shadow(0 0 12px var(--glow-violet));
+  }
+  .social-icons svg {
+    fill: #fff;
+    width: 100%;
+    height: 100%;
+    transition: fill 0.3s;
+  }
+  .social-icons a:hover svg {
+    fill: var(--glow-violet);
+  }
+
+  /* شبكة الطاقة المتدفقة */
+  .grid-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-color: transparent;
+  }
+  /* SVG شبكة الطاقة مدمجة */
+</style>
 </head>
 <body>
   <video autoplay muted loop id="background-video">
@@ -143,7 +174,73 @@
   </video>
 
   <div class="id-card">
-    <div class="grid-overlay"></div>
+    <div class="grid-overlay" aria-hidden="true">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="100%"
+        height="100%"
+        viewBox="0 0 420 420"
+        preserveAspectRatio="xMidYMid meet"
+        style="position:absolute; inset:0; z-index:0; pointer-events:none;"
+      >
+        <!-- خطوط الشبكة -->
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="rgba(163,0,255,0.8)" />
+            <stop offset="100%" stop-color="rgba(163,0,255,0)" />
+          </radialGradient>
+          <filter id="glow-filter" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#a300ff" flood-opacity="0.8"/>
+          </filter>
+        </defs>
+        <!-- خطوط أفقية -->
+        <g stroke="rgba(163,0,255,0.15)" stroke-width="1">
+          <line x1="0" y1="40" x2="420" y2="40"/>
+          <line x1="0" y1="80" x2="420" y2="80"/>
+          <line x1="0" y1="120" x2="420" y2="120"/>
+          <line x1="0" y1="160" x2="420" y2="160"/>
+          <line x1="0" y1="200" x2="420" y2="200"/>
+          <line x1="0" y1="240" x2="420" y2="240"/>
+          <line x1="0" y1="280" x2="420" y2="280"/>
+          <line x1="0" y1="320" x2="420" y2="320"/>
+          <line x1="0" y1="360" x2="420" y2="360"/>
+        </g>
+        <!-- خطوط رأسية -->
+        <g stroke="rgba(163,0,255,0.15)" stroke-width="1">
+          <line x1="40" y1="0" x2="40" y2="420"/>
+          <line x1="80" y1="0" x2="80" y2="420"/>
+          <line x1="120" y1="0" x2="120" y2="420"/>
+          <line x1="160" y1="0" x2="160" y2="420"/>
+          <line x1="200" y1="0" x2="200" y2="420"/>
+          <line x1="240" y1="0" x2="240" y2="420"/>
+          <line x1="280" y1="0" x2="280" y2="420"/>
+          <line x1="320" y1="0" x2="320" y2="420"/>
+          <line x1="360" y1="0" x2="360" y2="420"/>
+        </g>
+        <!-- دوائر الطاقة -->
+        <g stroke="none" fill="url(#glow)" filter="url(#glow-filter)">
+          <circle cx="40" cy="40" r="7"/>
+          <circle cx="120" cy="80" r="7"/>
+          <circle cx="280" cy="160" r="7"/>
+          <circle cx="360" cy="320" r="7"/>
+          <circle cx="200" cy="200" r="7"/>
+          <circle cx="320" cy="40" r="7"/>
+          <circle cx="80" cy="280" r="7"/>
+          <circle cx="160" cy="360" r="7"/>
+        </g>
+        <!-- خطوط متصلة بين الدوائر -->
+        <g stroke="url(#glow)" stroke-width="2" stroke-linecap="round" opacity="0.7">
+          <line x1="40" y1="40" x2="120" y2="80"/>
+          <line x1="120" y1="80" x2="280" y2="160"/>
+          <line x1="280" y1="160" x2="360" y2="320"/>
+          <line x1="360" y1="320" x2="320" y2="40"/>
+          <line x1="320" y1="40" x2="200" y2="200"/>
+          <line x1="200" y1="200" x2="80" y2="280"/>
+          <line x1="80" y1="280" x2="160" y2="360"/>
+          <line x1="160" y1="360" x2="40" y2="40"/>
+        </g>
+      </svg>
+    </div>
 
     <div class="photo-wrapper">
       <img src="https://files.catbox.moe/yj6kr0.jpg" alt="Profile Picture" />
@@ -152,14 +249,14 @@
     <h2>Obaida Tos</h2>
     <p class="typewriter">Shadow Identity</p>
 
-    <div class="social-icons">
-      <a href="https://instagram.com/yourprofile" target="_blank" title="Instagram" aria-label="Instagram">
+    <div class="social-icons" role="list">
+      <a href="https://instagram.com/yourprofile" target="_blank" title="Instagram" aria-label="Instagram" role="listitem">
         <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .2 2.5.4.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.5.3 1.3.4 2.5.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 2-.4 2.5-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.5.2-1.3.3-2.5.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.2-2.5-.4-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.5-.3-1.3-.4-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-2 .4-2.5.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .5-.2 1.3-.3 2.5-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.4A6.4 6.4 0 1012 18.4 6.4 6.4 0 0012 5.6zm5.8-2a1.4 1.4 0 110 2.8 1.4 1.4 0 010-2.8z"/></svg>
       </a>
-      <a href="https://t.me/yourprofile" target="_blank" title="Telegram" aria-label="Telegram">
+      <a href="https://t.me/yourprofile" target="_blank" title="Telegram" aria-label="Telegram" role="listitem">
         <svg viewBox="0 0 24 24"><path d="M22.5 5.8L2.6 12.9c-1.3.5-1.3 1.3-.1 1.7l4.9 1.5 1.9 6c.2.6.4.8.8.8.4 0 .7-.2 1-.5l2.7-2.6 4.5 3.3c.8.4 1.4.2 1.6-.7l3.5-16.1c.2-1-.4-1.5-1.8-1.1z"/></svg>
       </a>
-      <a href="https://tiktok.com/@yourprofile" target="_blank" title="TikTok" aria-label="TikTok">
+      <a href="https://tiktok.com/@yourprofile" target="_blank" title="TikTok" aria-label="TikTok" role="listitem">
         <svg viewBox="0 0 24 24"><path d="M9.07 2h3.07c.02 2.08 1.71 3.76 3.78 3.78v3.08a6.78 6.78 0 01-3.78-.94v7.65a4.85 4.85 0 11-4.85-4.85h.01v3.07a1.78 1.78 0 101.77 1.78V2z"/></svg>
       </a>
     </div>
