@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Futuristic ID Card</title>
+  <title>Futuristic ID Card Enhanced Glow & Dense Grid</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     :root {
       --violet: #a300ff;
-      --glow-violet: #f5e1ff;
+      --glow-violet: #e0b3ff;
+      --glow-intense: #d48fff;
     }
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
     body {
       background: #000;
@@ -39,9 +38,12 @@
       padding: 36px;
       border-radius: 28px;
       background: rgba(255, 255, 255, 0.05);
-      border: 0.3px solid rgba(255, 255, 255, 0.1);
+      border: 0.3px solid rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(16px);
-      box-shadow: 0 0 24px rgba(163, 0, 255, 0.3);
+      box-shadow:
+        0 0 30px 1px var(--violet),
+        0 0 50px 10px var(--glow-violet),
+        inset 0 0 40px 3px var(--glow-intense);
       overflow: hidden;
       text-align: center;
       z-index: 1;
@@ -51,15 +53,24 @@
       position: relative;
       width: 160px;
       height: 160px;
-      margin: 0 auto 20px;
+      margin: 0 auto 22px;
+      border-radius: 50%;
+      box-shadow:
+        0 0 15px 3px var(--glow-violet),
+        inset 0 0 18px 5px var(--violet);
+      filter: drop-shadow(0 0 8px var(--glow-violet));
+      /* إضافة إطار دائري ثاني أقل سمك */
+      border: 2px solid var(--violet);
     }
 
     .photo-wrapper img {
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      border: 2px solid var(--violet);
-      box-shadow: 0 0 16px var(--glow-violet);
+      border: 3px solid var(--glow-violet);
+      box-shadow:
+        0 0 20px 6px var(--glow-violet),
+        0 0 35px 12px var(--violet);
       position: relative;
       z-index: 2;
     }
@@ -67,15 +78,16 @@
     .photo-wrapper::before {
       content: "";
       position: absolute;
-      top: -8px;
-      left: -8px;
-      width: calc(100% + 16px);
-      height: calc(100% + 16px);
+      top: -12px;
+      left: -12px;
+      width: calc(100% + 24px);
+      height: calc(100% + 24px);
       border-radius: 50%;
       border: 1.5px solid var(--glow-violet);
       animation: rotateLight 5s linear infinite;
-      box-shadow: 0 0 22px var(--violet);
-      opacity: 0.8;
+      box-shadow: 0 0 28px 3px var(--violet);
+      opacity: 0.9;
+      z-index: 1;
     }
 
     @keyframes rotateLight {
@@ -86,7 +98,9 @@
     h2 {
       font-size: 24px;
       margin-bottom: 6px;
-      text-shadow: 0 0 6px var(--glow-violet);
+      text-shadow:
+        0 0 6px var(--glow-violet),
+        0 0 15px var(--violet);
     }
 
     .typewriter {
@@ -97,7 +111,8 @@
       font-size: 16px;
       letter-spacing: 1px;
       margin-bottom: 18px;
-      animation: typing 3s steps(30,end), blink .8s step-end infinite;
+      animation: typing 3s steps(30, end), blink 0.8s step-end infinite;
+      text-shadow: 0 0 8px var(--glow-violet);
     }
 
     @keyframes typing { from { width: 0 } to { width: 100% } }
@@ -108,37 +123,43 @@
       justify-content: center;
       gap: 22px;
       margin-top: 12px;
+      filter: drop-shadow(0 0 6px var(--glow-violet));
     }
 
     .social-icons a {
-      font-size: 24px;
+      font-size: 26px;
       color: #fff;
       transition: 0.3s ease;
-      opacity: 0.8;
+      opacity: 0.85;
+      filter: drop-shadow(0 0 6px var(--glow-violet));
     }
 
     .social-icons a:hover {
       color: var(--violet);
       transform: scale(1.3);
       opacity: 1;
-      text-shadow: 0 0 12px var(--glow-violet);
+      text-shadow: 0 0 16px var(--glow-violet);
+      filter: drop-shadow(0 0 18px var(--glow-violet));
     }
 
-    /* شبكة بصرية واقعية */
+    /* شبكة رقمية كثيفة متوهجة */
     .grid-overlay {
       position: absolute;
       inset: 0;
       pointer-events: none;
       z-index: 0;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600"><g stroke="rgba(163,0,255,0.25)" stroke-width="1"><path d="M0 50H600M0 100H600M0 150H600M0 200H600M0 250H600M0 300H600M0 350H600M0 400H600M0 450H600M0 500H600M0 550H600"/><path d="M50 0V600M100 0V600M150 0V600M200 0V600M250 0V600M300 0V600M350 0V600M400 0V600M450 0V600M500 0V600M550 0V600"/></g><g stroke="rgba(163,0,255,0.5)" stroke-width="2"><circle cx="50" cy="50" r="4"/><circle cx="550" cy="50" r="4"/><circle cx="50" cy="550" r="4"/><circle cx="550" cy="550" r="4"/><line x1="50" y1="50" x2="550" y2="50"/><line x1="50" y1="550" x2="550" y2="550"/><line x1="50" y1="50" x2="50" y2="550"/><line x1="550" y1="50" x2="550" y2="550"/></g></svg>');
-      background-size: 600px 600px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800"><g stroke="rgba(163,0,255,0.18)" stroke-width="1"><path d="M0 25H800M0 50H800M0 75H800M0 100H800M0 125H800M0 150H800M0 175H800M0 200H800M0 225H800M0 250H800M0 275H800M0 300H800M0 325H800M0 350H800M0 375H800M0 400H800M0 425H800M0 450H800M0 475H800M0 500H800M0 525H800M0 550H800M0 575H800M0 600H800M0 625H800M0 650H800M0 675H800M0 700H800M0 725H800M0 750H800M0 775H800"/><path d="M25 0V800M50 0V800M75 0V800M100 0V800M125 0V800M150 0V800M175 0V800M200 0V800M225 0V800M250 0V800M275 0V800M300 0V800M325 0V800M350 0V800M375 0V800M400 0V800M425 0V800M450 0V800M475 0V800M500 0V800M525 0V800M550 0V800M575 0V800M600 0V800M625 0V800M650 0V800M675 0V800M700 0V800M725 0V800M750 0V800M775 0V800"/></g><g stroke="rgba(163,0,255,0.5)" stroke-width="2"><circle cx="25" cy="25" r="4"/><circle cx="775" cy="25" r="4"/><circle cx="25" cy="775" r="4"/><circle cx="775" cy="775" r="4"/><line x1="25" y1="25" x2="775" y2="25"/><line x1="25" y1="775" x2="775" y2="775"/><line x1="25" y1="25" x2="25" y2="775"/><line x1="775" y1="25" x2="775" y2="775"/></g></svg>');
+      background-size: 800px 800px;
       background-repeat: repeat;
       animation: pulseGrid 6s ease-in-out infinite;
+      filter:
+        drop-shadow(0 0 4px var(--violet))
+        drop-shadow(0 0 10px var(--glow-violet));
     }
 
     @keyframes pulseGrid {
-      0%, 100% { opacity: 0.15; }
-      50% { opacity: 0.5; }
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.7; }
     }
   </style>
 </head>
@@ -155,13 +176,16 @@
       <img src="https://files.catbox.moe/yj6kr0.jpg" alt="Profile Picture" />
     </div>
 
-    <h2>Obaida Tos</h2>
-    <p class="typewriter">Shadow Identity</p>
+    <h2>𝐦𝘢𝘳𝒶🇵🇸 - ✦</h2>
+    <p class="typewriter">𝗠𝗮𝘆 𝘄𝗮𝘁𝗲𝗿𝗺𝗲𝗹𝗼𝗻 𝗿𝘂𝗹𝗲 𝘁𝗵𝗲 𝘄𝗼𝗿𝗹𝗱
+Telegram Channel : @obaidaq
+Instagram : @fpg.x
+</p>
 
     <div class="social-icons">
-      <a href="https://instagram.com" title="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://t.me" title="Telegram"><i class="fab fa-telegram"></i></a>
-      <a href="https://tiktok.com" title="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://instagram.com" title="Instagram" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://t.me" title="Telegram" aria-label="Telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+      <a href="https://tiktok.com" title="TikTok" aria-label="TikTok" target="_blank"><i class="fab fa-tiktok"></i></a>
     </div>
   </div>
 
